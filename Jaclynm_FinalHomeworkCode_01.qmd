@@ -1,0 +1,159 @@
+---
+title: "AN588 Homework1"
+author: "Jaclyn"
+format: 
+  html:
+    css: Styles.css
+---
+
+# Challenge 1: 
+## Every third word of the first line of the novel *Ulysses*, by James Joyce
+
+```{r}
+u<- "stately, plump buck milligan came from the stirhead, bearing a bowl of lather on which a mirror and a razor lay crossed" 
+u
+```
+
+Use strsplit to separate the words.
+
+```{r}
+strsplit(u," ")
+
+```
+
+```{r}
+np<-gsub("[[:punct:]]","",u) 
+np
+```
+
+After Googling I was able to find this set that worked, making sure to have a space between the " "
+
+```{r}
+word<-unlist(strsplit(np," ")) #I'm honestly unsure of what this does but it was the only thing that got this working
+word
+```
+
+```{r}
+thirds<- word[seq(3, length(word),by =3)]
+thirds
+```
+
+# Challenge 2: Practice with matrix and specifying desired rows/columns
+
+```{r}
+m<- matrix(data=1:80,nrow=8,ncol=10,byrow=FALSE)
+m
+```
+
+Comma needs to go before c because you are selecting all rows so you are leaving the row index empty!
+
+```{r}
+x<-m[,c(2,3,6)]
+x
+```
+
+Here you put the comma AFTER the c and numbers because you are selecting for all columns, so you leave the column index empty
+
+```{r}
+x<-m[c(6:8),] #Fixed it to be 6-8 and not 6 & 8
+x
+```
+
+I felt this was confusing in the instructions, so i am not sure if this is right
+
+```{r}
+x<-m[2:6,2:9] #took away the c() to make it more streamlined
+x
+```
+
+# Challenge 3: Practice with Arrays
+
+```{r}
+n<- 400:1
+a<-array(n,dim=c(5,5,4,4))
+a
+```
+
+```{r}
+a[1,1,1,2]
+a[2,3,2,]
+a[1:5,1:5,3,3]
+```
+
+# Challenge 4: List representing primate taxonomy
+
+I am going to work backwards making a vector of the different families
+
+```{r}
+platyrrhini<-c("cebidae","atelidae","pitheciidae")
+catarrhini<-c("cercopithecidae","hyobatidae","hominidae")
+lorisoidea<-c("lorisidae","galagidae")
+lemuroidea<-c("cheirogaleidae","lepilemuridae","indriidae","lemuridae","daubentoniidae")
+tarsiidae<-c("tarsiidae")
+
+```
+
+Now I am going to put them in lists
+
+```{r}
+anthropoidea<-list(platyrrhini,catarrhini)
+names(anthropoidea)<-list("platyrrhini","cararrhini")
+anthropoidea
+strepsirhini<-list(lorisoidea,lemuroidea)
+names(strepsirhini)<-list("lorisoidea","lemuroidea")
+strepsirhini
+tarsioidea<-list(tarsiidae)
+names(tarsioidea)<-list("tarsiidae")
+tarsioidea
+
+```
+
+```{r}
+haplorhini<- list(anthropoidea,tarsioidea)
+names(haplorhini)<-list("anthropoidea","tarsioidea")
+haplorhini
+```
+
+This is looking funky with the names? *Neither of us were able to get it to look good with the names*
+
+```{r}
+primates<-list(haplorhini,strepsirhini)
+names(primates)<-list("haplorhini","strepsirhini")
+primates
+```
+
+# CHALLENGE 5: Data frames
+
+Create a matrix
+
+```{r}
+n<- c(3,0,1,23,1,2,33,1,1,42,0,1,41,0,2) #I created a vector first because I like the organization of it 
+m3<-matrix(n,nrow=5,ncol=3,byrow=TRUE)
+m3
+```
+
+Use as.data.frame to make data frame *Difference between as.data.frame and data.frame?*
+
+```{r}
+df<-as.data.frame(m3)
+df
+```
+
+keeping row empty so it only changes column 2, using as.logical
+
+```{r}
+df[,2]<-as.logical(df[,2])
+df
+```
+
+Keeping row empty so it only changes column 3, using as.factor
+
+```{r}
+df[,3]<-as.factor(df[,3])
+df
+```
+
+```{r}
+str(df)
+
+```
