@@ -107,7 +107,7 @@ haplorhini
 ```
 
 This is looking funky with the names?
-
+*I had this issue too! did you ever find a fix?*
 ```{r}
 primates<-list(haplorhini,strepsirhini)
 names(primates)<-list("haplorhini","strepsirhini")
@@ -120,6 +120,7 @@ Create a matrix
 
 ```{r}
 n<- c(3,0,1,23,1,2,33,1,1,42,0,1,41,0,2)
+# it's interesting that you assigned these numbers to the variable "n" first, instead of putting it straight into the matrix assignment. any particular reason?
 m3<-matrix(n,nrow=5,ncol=3,byrow=TRUE)
 m3
 ```
@@ -127,7 +128,7 @@ m3
 Use as.data.frame to make data drame
 
 ```{r}
-df<-as.data.frame(m3)
+df<-as.data.frame(m3) # i used the command data.frame here, not as.data.frame - i wonder what the difference is?
 df
 ```
 
@@ -149,3 +150,4 @@ df
 str(df)
 
 ```
+*I think the annotations might be clearer if you list what the challenges are within your markdown document - it could also make it easier to reference it later*
