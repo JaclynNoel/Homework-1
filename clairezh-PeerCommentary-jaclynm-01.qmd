@@ -20,12 +20,12 @@ np
 After Googling I was able to find this set that worked, making sure to have a space between the " "
 
 ```{r}
-word<-unlist(strsplit(np," "))
+word<-unlist(strsplit(np," ")) # what does "unlist" do?
 word
 ```
 
 ```{r}
-thirds<- word[seq(3, length(word),by =3)]
+thirds<- word[seq(3, length(word),by =3)] # i like this way of doing it - i did [seq(from-1,to=22,by=3)] but you solved it more elegantly
 thirds
 ```
 
@@ -39,20 +39,21 @@ m
 Comma needs to go before c because you are selecting all rows so you are leaving the row index empty!
 
 ```{r}
-x<-m[,c(2,3,6)]
+x<-m[,c(2,3,6)] # again, a more efficient/elegant way of solving this than I had! I didn't think of putting c() within m[]
 x
 ```
 
 Here you put the comma AFTER the c and numbers because you are selecting for all columns, so you leave the column index empty
 
 ```{r}
-x<-m[c(6,8),]
+x<-m[c(6,8),] # I believe the challenge is asking for the 6th *to* 8th row, so maybe m[6:8, ] would work better?
 x
 ```
 
 I felt this was confusing in the instructions, so i am not sure if this is right
 
 ```{r}
+# I had the same code, except I didn't have the c() commands - not sure if they're necessary here
 x<-m[c(2:6),c(2:9)]
 x
 ```
